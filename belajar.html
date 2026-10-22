@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalkulator Pembagian Gaji - CuanTenang</title>
+<meta name="description" content="Hitung pembagian gaji antara kebutuhan, keinginan, dan tabungan, disesuaikan dengan besar gajimu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw-config.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{overscroll-behavior-y:none}
+.material-symbols-outlined{font-size:20px;line-height:1;vertical-align:middle;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #006c4a;outline-offset:2px}
+</style>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased pb-20 md:pb-0">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,41,66,0.06)]">
+<div class="h-16 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-gutter">
+<a href="index.html" class="flex items-center gap-space-sm" aria-label="CuanTenang - ke beranda">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f2942"/><path d="M9 17.5l5 5 9-11" fill="none" stroke="#82f5c1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span class="font-display text-headline-sm font-bold tracking-tight text-primary-container">CuanTenang</span></a>
+<nav class="hidden md:flex items-center gap-space-lg" aria-label="Menu utama"><a href="index.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Beranda</a><a href="template.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Template</a><a aria-current="page" href="belajar.html" class="bg-surface-container text-on-surface font-bold rounded-lg px-space-sm py-space-xs text-label-lg">Belajar</a><a href="pasar.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Pasar</a></nav>
+<a href="template.html" class="hidden sm:inline-flex items-center justify-center bg-secondary text-on-secondary hover:opacity-90 font-label-lg text-label-lg px-space-md py-space-xs rounded-lg transition">Unduh Template</a>
+</div></header>
+<main class="pt-16">
+<section class="bg-gradient-to-b from-surface-container-low to-surface"><div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-2xl">
+<span class="inline-flex rounded-lg bg-secondary-container text-on-secondary-container px-space-sm py-space-xs text-label-md">Belajar</span>
+<h1 class="font-display text-display-mobile md:text-display text-primary mt-space-md max-w-3xl">Kalkulator pembagian gaji</h1>
+<p class="text-body-lg text-on-surface-variant mt-space-md max-w-2xl">Masukkan gaji bersihmu untuk melihat pembagian yang disarankan antara kebutuhan, keinginan, dan tabungan. Persentasenya menyesuaikan dengan besar gaji, sama dengan template.</p></div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin pb-space-xl"><div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg md:p-space-xl">
+<div id="calc" data-calc data-mode="pengeluaran">
+<label for="calc-salary" class="block font-label-lg text-label-lg text-on-surface mb-space-xs">Gaji bersih per bulan</label>
+<div class="flex items-stretch max-w-sm">
+<span class="flex items-center rounded-l-lg border border-r-0 border-outline-variant bg-surface-container px-space-md font-label-lg text-on-surface-variant">Rp</span>
+<input id="calc-salary" data-salary type="text" inputmode="numeric" autocomplete="off" value="8.000.000" class="w-full rounded-r-lg border border-outline-variant bg-surface-container-lowest px-space-md py-space-sm text-body-lg font-bold text-primary">
+</div>
+<p class="mt-space-xs text-label-md text-on-surface-variant">Gaji setelah potongan. Contoh angka sudah terisi, ganti dengan gajimu.</p>
+<div class="mt-space-sm flex flex-wrap gap-space-xs" aria-label="Pilihan cepat"><button type="button" data-amount="3000000" class="rounded-lg bg-surface-container text-on-surface px-space-sm py-space-xs text-label-md hover:bg-surface-container-high">Rp 3 juta</button><button type="button" data-amount="6000000" class="rounded-lg bg-surface-container text-on-surface px-space-sm py-space-xs text-label-md hover:bg-surface-container-high">Rp 6 juta</button><button type="button" data-amount="10000000" class="rounded-lg bg-surface-container text-on-surface px-space-sm py-space-xs text-label-md hover:bg-surface-container-high">Rp 10 juta</button><button type="button" data-amount="25000000" class="rounded-lg bg-surface-container text-on-surface px-space-sm py-space-xs text-label-md hover:bg-surface-container-high">Rp 25 juta</button><button type="button" data-amount="75000000" class="rounded-lg bg-surface-container text-on-surface px-space-sm py-space-xs text-label-md hover:bg-surface-container-high">Rp 75 juta</button></div>
+<div class="mt-space-md flex flex-wrap items-center gap-space-xs" role="group" aria-label="Pilih fokus">
+<span class="text-label-md text-on-surface-variant mr-space-xs">Fokus:</span>
+<button type="button" data-set-mode="pengeluaran" aria-pressed="true" class="rounded-lg bg-primary-container text-on-primary px-space-md py-space-xs text-label-lg font-label-lg">Banyak pengeluaran</button>
+<button type="button" data-set-mode="cicilan" aria-pressed="false" class="rounded-lg bg-surface-container text-on-surface px-space-md py-space-xs text-label-lg font-label-lg">Banyak cicilan</button>
+</div>
+<p data-mode-note class="mt-space-xs text-label-md text-on-surface-variant">Versi ini cocok kalau cicilanmu sedikit tapi pengeluaran harian banyak. Cicilan (kalau ada) dihitung di dalam Kebutuhan.</p>
+<div data-results class="mt-space-lg grid sm:grid-cols-2 gap-space-md" aria-live="polite"></div>
+<p data-tier-info class="mt-space-md text-body-sm font-label-lg text-primary"></p>
+<div data-links class="mt-space-sm flex flex-wrap gap-space-sm"></div>
+<p class="mt-space-md text-label-md text-on-surface-variant">Persentase adalah panduan umum yang disesuaikan dengan besar gaji, sama dengan yang dipakai di template. Ini bukan nasihat keuangan.</p>
+</div>
+</div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-xl"><h2 class="font-display text-headline-lg-mobile md:text-headline-lg text-primary">Apa bedanya kebutuhan dan keinginan?</h2>
+<div class="grid md:grid-cols-3 gap-gutter mt-space-lg">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">Kebutuhan (primer)</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Pengeluaran yang sulit ditunda.</p>
+<ul class="mt-space-sm space-y-space-xs text-body-md text-on-surface-variant"><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Tempat tinggal (sewa, kos, atau KPR)</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Makan pokok dan belanja dapur</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Listrik, air, dan internet</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Transportasi kerja</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Cicilan wajib dan kesehatan</span></li></ul></div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">Keinginan (sekunder)</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Pengeluaran untuk kenyamanan dan gaya hidup.</p>
+<ul class="mt-space-sm space-y-space-xs text-body-md text-on-surface-variant"><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Makan di luar dan nongkrong</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Langganan streaming</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Belanja hobi, gadget, dan pakaian</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Liburan</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Perawatan diri non-medis</span></li></ul></div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">Tabungan dan investasi</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Uang yang kamu sisihkan untuk masa depan.</p>
+<ul class="mt-space-sm space-y-space-xs text-body-md text-on-surface-variant"><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Dana darurat</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Tabungan untuk tujuan tertentu</span></li><li class="flex gap-space-xs"><span class="material-symbols-outlined text-secondary shrink-0">check_circle</span><span>Investasi jangka panjang</span></li></ul></div></div>
+<div class="mt-space-lg rounded-xl bg-surface-container p-space-md text-body-sm text-on-surface-variant"><b class="text-on-surface">Urutan prioritas yang umum disarankan:</b> siapkan dana darurat dulu, lunasi utang berbunga tinggi, baru perbesar investasi. Kalau biaya hidup di kotamu tinggi, porsi kebutuhan memang bisa lebih besar. Sesuaikan dengan kondisimu. Ini panduan umum, bukan nasihat keuangan.</div></section>
+</main>
+<footer class="bg-surface-container-low border-t border-outline-variant/40 mt-space-3xl">
+<div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-2xl">
+<div class="grid md:grid-cols-3 gap-space-xl">
+<div><p class="font-display text-headline-sm font-bold text-primary-container">CuanTenang</p>
+<p class="text-body-sm text-on-surface-variant mt-space-sm max-w-xs">Edukasi dan template keuangan pribadi yang praktis untuk masyarakat Indonesia.</p></div>
+<div><p class="font-label-lg text-label-lg text-primary mb-space-sm">Navigasi</p>
+<ul class="space-y-space-xs text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface" href="index.html">Beranda</a></li><li><a class="hover:text-on-surface" href="template.html">Template</a></li><li><a class="hover:text-on-surface" href="belajar.html">Kalkulator gaji</a></li><li><a class="hover:text-on-surface" href="pasar.html">Data pasar</a></li></ul></div>
+<div><p class="font-label-lg text-label-lg text-primary mb-space-sm">Informasi</p>
+<ul class="space-y-space-xs text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface" href="tentang.html">Tentang</a></li><li><a class="hover:text-on-surface" href="tentang.html#privasi">Kebijakan privasi</a></li><li><a class="hover:text-on-surface" href="tentang.html#disclaimer">Disclaimer</a></li></ul></div>
+</div>
+<div class="mt-space-xl rounded-xl bg-surface-container p-space-md text-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Catatan:</strong> seluruh materi, kalkulator, dan template di situs ini bersifat edukasi dan panduan umum. Ini bukan nasihat keuangan, investasi, atau hukum. Untuk keputusan penting, konsultasikan dengan perencana keuangan profesional.
+</div>
+<p class="mt-space-lg text-label-md text-on-surface-variant">&copy; 2026 CuanTenang. Semua hak dilindungi.</p>
+</div></footer>
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/60" aria-label="Menu bawah"><div class="grid grid-cols-4"><a href="index.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">home</span><span class="font-label-md text-[11px]">Beranda</span></a><a href="template.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">description</span><span class="font-label-md text-[11px]">Template</span></a><a href="belajar.html" aria-current="page" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-secondary font-bold"><span class="material-symbols-outlined" style="font-size:24px">calculate</span><span class="font-label-md text-[11px]">Belajar</span></a><a href="pasar.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">show_chart</span><span class="font-label-md text-[11px]">Pasar</span></a></div></nav>
+<script src="assets/app.js"></script>
+</body>
+</html>

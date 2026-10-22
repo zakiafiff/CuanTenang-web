@@ -1,0 +1,25 @@
+CUANTENANG - WEB VERSI 1 (statis, tanpa server)
+
+CARA MEMBUKA DI KOMPUTER
+1. Ekstrak (unzip) folder ini.
+2. Klik dua kali file index.html. Halaman terbuka di browser.
+   Butuh internet (untuk huruf, gaya tampilan, dan grafik pasar).
+
+ISI FOLDER
+- index.html, template.html, belajar.html, pasar.html, tentang.html  = 5 halaman
+- templates/   = 8 file Excel (.xlsx) yang diunduh pengunjung
+- assets/app.js        = logika kalkulator dan grafik Antam
+- assets/antam-data.js = tempat mengisi harga emas Antam (masih kosong)
+- assets/tw-config.js  = warna dan huruf dari desain Stitch
+
+YANG HARUS KAMU ISI / GANTI SEBELUM DIPUBLIKASIKAN
+1. tentang.html: ganti tulisan [isi alamat email kamu di sini] dengan emailmu.
+2. assets/antam-data.js: isi harga Antam dari laman resmi Logam Mulia (petunjuk di dalam file).
+   Lihat contoh tampilan grafik dengan membuka: pasar.html?demo=1 (data contoh, bukan harga asli).
+3. Nama "CuanTenang" dibuat otomatis oleh Stitch. Cek dulu apakah kamu suka dan belum dipakai orang lain.
+
+CATATAN
+- Persentase di assets/app.js sama dengan tabel profil di dalam file template.
+  Kalau kamu mengubah persentase di template, ubah juga di app.js.
+- Grafik IHSG dan USD/IDR memakai widget TradingView. Kalau muncul pesan simbol tidak tersedia,
+  ganti simbol di pasar.html (cari "symbol").

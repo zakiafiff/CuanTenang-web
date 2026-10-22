@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pantauan Pasar - CuanTenang</title>
+<meta name="description" content="Pantau IHSG, harga emas Antam, dan kurs USD/IDR dalam satu halaman.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tw-config.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{overscroll-behavior-y:none}
+.material-symbols-outlined{font-size:20px;line-height:1;vertical-align:middle;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #006c4a;outline-offset:2px}
+</style>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased pb-20 md:pb-0">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,41,66,0.06)]">
+<div class="h-16 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-gutter">
+<a href="index.html" class="flex items-center gap-space-sm" aria-label="CuanTenang - ke beranda">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f2942"/><path d="M9 17.5l5 5 9-11" fill="none" stroke="#82f5c1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span class="font-display text-headline-sm font-bold tracking-tight text-primary-container">CuanTenang</span></a>
+<nav class="hidden md:flex items-center gap-space-lg" aria-label="Menu utama"><a href="index.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Beranda</a><a href="template.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Template</a><a href="belajar.html" class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors">Belajar</a><a aria-current="page" href="pasar.html" class="bg-surface-container text-on-surface font-bold rounded-lg px-space-sm py-space-xs text-label-lg">Pasar</a></nav>
+<a href="template.html" class="hidden sm:inline-flex items-center justify-center bg-secondary text-on-secondary hover:opacity-90 font-label-lg text-label-lg px-space-md py-space-xs rounded-lg transition">Unduh Template</a>
+</div></header>
+<main class="pt-16">
+<section class="bg-gradient-to-b from-surface-container-low to-surface"><div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-2xl">
+<span class="inline-flex rounded-lg bg-secondary-container text-on-secondary-container px-space-sm py-space-xs text-label-md">Data tertunda &middot; hanya informasi</span>
+<h1 class="font-display text-display-mobile md:text-display text-primary mt-space-md max-w-3xl">Pantauan pasar</h1>
+<p class="text-body-lg text-on-surface-variant mt-space-md max-w-2xl">Tiga acuan yang sering dipantau: IHSG, harga emas Antam, dan kurs USD/IDR. Data bersifat informatif dan bisa tertunda, bukan untuk keputusan jual atau beli.</p></div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-md"><div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg">
+<h2 class="font-display text-headline-md text-primary">IHSG</h2><p class="text-body-sm text-on-surface-variant mb-space-md">Indeks Harga Saham Gabungan, rata-rata pergerakan saham di Bursa Efek Indonesia.</p>
+<div class="tradingview-widget-container" style="height:420px;width:100%">
+<div class="tradingview-widget-container__widget" style="height:calc(100% - 24px);width:100%"></div>
+<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/IDX-COMPOSITE/" rel="noopener nofollow" target="_blank" class="text-label-md text-on-surface-variant underline">Grafik IHSG</a><span class="text-label-md text-on-surface-variant"> oleh TradingView</span></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{"autosize": true, "symbol": "IDX:COMPOSITE", "interval": "D", "timezone": "Asia/Jakarta", "theme": "light", "style": "2", "locale": "id", "allow_symbol_change": false, "hide_side_toolbar": true, "calendar": false, "support_host": "https://www.tradingview.com"}
+</script></div>
+</div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-md" data-antam><div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg">
+<div class="flex flex-wrap items-center gap-space-sm"><h2 class="font-display text-headline-md text-primary">Emas Antam</h2><span data-antam-demo class="hidden rounded-lg bg-error-container text-on-error-container px-space-sm py-space-xs text-label-md font-bold">DATA CONTOH, BUKAN HARGA ASLI</span></div>
+<p class="text-body-sm text-on-surface-variant mb-space-md">Harga emas batangan Antam per gram. Data diperbarui secara manual dari laman resmi Logam Mulia.</p>
+<div data-antam-empty class="hidden rounded-lg bg-surface-container-low p-space-lg text-body-md text-on-surface-variant">Grafik harga Antam belum tersedia. Lihat harga terbaru di <a class="text-secondary font-label-lg hover:underline" href="https://www.logammulia.com" target="_blank" rel="noopener">laman resmi Logam Mulia</a>.</div>
+<div data-antam-box class="hidden">
+<div class="grid sm:grid-cols-3 gap-space-sm mb-space-md">
+<div class="rounded-lg bg-surface-container-low p-space-md"><span class="block text-label-md text-on-surface-variant">Harga jual</span><span data-antam-jual class="font-display text-headline-sm text-primary"></span></div>
+<div class="rounded-lg bg-surface-container-low p-space-md"><span class="block text-label-md text-on-surface-variant">Harga buyback</span><span data-antam-buyback class="font-display text-headline-sm text-primary"></span></div>
+<div class="rounded-lg bg-surface-container-low p-space-md"><span class="block text-label-md text-on-surface-variant">Terakhir diperbarui</span><span data-antam-tanggal class="font-display text-headline-sm text-primary"></span></div></div>
+<div data-antam-chart></div>
+<p class="mt-space-sm text-label-md text-on-surface-variant"><span class="inline-block h-2 w-4 rounded bg-secondary align-middle"></span> Harga jual &nbsp; <span class="inline-block h-2 w-4 rounded bg-primary-container align-middle"></span> Harga buyback &nbsp; (sumbu kiri dalam ribu rupiah)</p></div>
+</div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-md"><div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg">
+<h2 class="font-display text-headline-md text-primary">USD/IDR</h2><p class="text-body-sm text-on-surface-variant mb-space-md">Kurs dolar Amerika terhadap rupiah.</p>
+<div class="tradingview-widget-container" style="height:420px;width:100%">
+<div class="tradingview-widget-container__widget" style="height:calc(100% - 24px);width:100%"></div>
+<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/USDIDR/" rel="noopener nofollow" target="_blank" class="text-label-md text-on-surface-variant underline">Grafik USD/IDR</a><span class="text-label-md text-on-surface-variant"> oleh TradingView</span></div>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{"autosize": true, "symbol": "FX_IDC:USDIDR", "interval": "D", "timezone": "Asia/Jakarta", "theme": "light", "style": "2", "locale": "id", "allow_symbol_change": false, "hide_side_toolbar": true, "calendar": false, "support_host": "https://www.tradingview.com"}
+</script></div>
+</div></section>
+
+<section class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-xl"><h2 class="font-display text-headline-md text-primary">Kamus singkat</h2>
+<div class="grid md:grid-cols-3 gap-gutter mt-space-md">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">IHSG</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Menggambarkan pergerakan rata-rata saham yang tercatat di Bursa Efek Indonesia. Naik berarti rata-rata harga saham sedang naik.</p></div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">Harga jual dan buyback</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Harga jual adalah harga saat kamu membeli emas. Buyback adalah harga saat emas kamu dibeli kembali, biasanya lebih rendah.</p></div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-lg"><h3 class="font-display text-headline-sm text-primary">USD/IDR</h3><p class="text-body-md text-on-surface-variant mt-space-xs">Berapa rupiah yang dibutuhkan untuk 1 dolar AS. Angka naik berarti rupiah melemah terhadap dolar.</p></div></div>
+<p class="mt-space-lg rounded-xl bg-surface-container p-space-md text-body-sm text-on-surface-variant">Informasi di halaman ini bukan ajakan atau rekomendasi untuk membeli atau menjual instrumen apa pun. Grafik IHSG dan USD/IDR disediakan oleh TradingView dan bisa tertunda.</p></section>
+</main>
+<footer class="bg-surface-container-low border-t border-outline-variant/40 mt-space-3xl">
+<div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin py-space-2xl">
+<div class="grid md:grid-cols-3 gap-space-xl">
+<div><p class="font-display text-headline-sm font-bold text-primary-container">CuanTenang</p>
+<p class="text-body-sm text-on-surface-variant mt-space-sm max-w-xs">Edukasi dan template keuangan pribadi yang praktis untuk masyarakat Indonesia.</p></div>
+<div><p class="font-label-lg text-label-lg text-primary mb-space-sm">Navigasi</p>
+<ul class="space-y-space-xs text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface" href="index.html">Beranda</a></li><li><a class="hover:text-on-surface" href="template.html">Template</a></li><li><a class="hover:text-on-surface" href="belajar.html">Kalkulator gaji</a></li><li><a class="hover:text-on-surface" href="pasar.html">Data pasar</a></li></ul></div>
+<div><p class="font-label-lg text-label-lg text-primary mb-space-sm">Informasi</p>
+<ul class="space-y-space-xs text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface" href="tentang.html">Tentang</a></li><li><a class="hover:text-on-surface" href="tentang.html#privasi">Kebijakan privasi</a></li><li><a class="hover:text-on-surface" href="tentang.html#disclaimer">Disclaimer</a></li></ul></div>
+</div>
+<div class="mt-space-xl rounded-xl bg-surface-container p-space-md text-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Catatan:</strong> seluruh materi, kalkulator, dan template di situs ini bersifat edukasi dan panduan umum. Ini bukan nasihat keuangan, investasi, atau hukum. Untuk keputusan penting, konsultasikan dengan perencana keuangan profesional.
+</div>
+<p class="mt-space-lg text-label-md text-on-surface-variant">&copy; 2026 CuanTenang. Semua hak dilindungi.</p>
+</div></footer>
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/60" aria-label="Menu bawah"><div class="grid grid-cols-4"><a href="index.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">home</span><span class="font-label-md text-[11px]">Beranda</span></a><a href="template.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">description</span><span class="font-label-md text-[11px]">Template</span></a><a href="belajar.html" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-on-surface-variant"><span class="material-symbols-outlined" style="font-size:24px">calculate</span><span class="font-label-md text-[11px]">Belajar</span></a><a href="pasar.html" aria-current="page" class="flex flex-col items-center justify-center min-h-[56px] gap-0.5 text-secondary font-bold"><span class="material-symbols-outlined" style="font-size:24px">show_chart</span><span class="font-label-md text-[11px]">Pasar</span></a></div></nav>
+<script src="assets/app.js"></script>
+<script src="assets/antam-data.js"></script>
+</body>
+</html>
