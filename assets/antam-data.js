@@ -1,6 +1,6 @@
-/* Data harga emas Antam (diisi manual dari laman resmi Logam Mulia).
-   Tambahkan satu baris per tanggal, format:
-   { "tanggal": "2026-10-19", "jual": 0, "buyback": 0 },
-   Ganti angka 0 dengan harga per gram (tanpa titik). Biarkan kosong kalau belum ada data. */
+/* Data harga emas Antam. Dibuat otomatis oleh scripts/update_antam.py
+   lewat .github/workflows/update-antam.yml. Jangan diedit manual,
+   karena akan tertimpa saat workflow berjalan lagi. */
 window.ANTAM_DATA = [
+  { "tanggal": "2026-11-02", "jual": 2531000, "buyback": 2286000 },
 ];
