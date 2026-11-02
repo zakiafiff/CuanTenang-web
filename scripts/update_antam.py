@@ -14,7 +14,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 
-API_URL = "https://emas.maulanar.my.id/api/prices?limit=20"
+API_BASE = "https://emas.maulanar.my.id"
 API_KEY = os.environ.get("EMAS_API_KEY", "")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HISTORY_PATH = os.path.join(ROOT, "data", "antam-history.json")
@@ -22,32 +22,58 @@ OUT_PATH = os.path.join(ROOT, "assets", "antam-data.js")
 MAX_ENTRIES = 180  # kira-kira 6 bulan kalau diperbarui harian
 
 
+def call_api(url):
+    req = urllib.request.Request(url, headers={"X-API-Key": API_KEY})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def pick_antam_1g(items):
+    """Cari item brand ANTAM dengan berat sedekat mungkin ke 1 gram."""
+    antam = [it for it in items if "ANTAM" in str(it.get("brand", "")).upper()]
+    exact = [it for it in antam if abs(float(it.get("weight") or 0) - 1) < 0.001]
+    if exact:
+        return exact[0]
+    if antam:
+        # tidak ada yang persis 1 gram, ambil yang beratnya paling dekat ke 1 gram
+        return min(antam, key=lambda it: abs(float(it.get("weight") or 0) - 1))
+    return None
+
+
 def fetch_price():
     if not API_KEY:
         print("::error::EMAS_API_KEY belum diset. Tambahkan di GitHub Secrets.")
         sys.exit(1)
-    req = urllib.request.Request(API_URL, headers={"X-API-Key": API_KEY})
+
+    item = None
     try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        print(f"::error::Gagal mengambil data (HTTP {e.code}): {e.read().decode('utf-8', 'ignore')}")
-        sys.exit(1)
-    except urllib.error.URLError as e:
-        print(f"::error::Gagal menghubungi API: {e}")
-        sys.exit(1)
+        # Cara 1: endpoint khusus per brand (paling tepat sasaran)
+        payload = call_api(f"{API_BASE}/api/prices/brand/ANTAM")
+        items = payload.get("data", []) if isinstance(payload, dict) else payload
+        if isinstance(items, list):
+            item = pick_antam_1g(items)
+    except (urllib.error.HTTPError, urllib.error.URLError) as e:
+        print(f"Endpoint /brand/ANTAM tidak bisa dipakai ({e}), coba endpoint daftar harga.")
 
-    items = payload.get("data", [])
-    candidates = [
-        it for it in items
-        if str(it.get("brand", "")).upper() == "ANTAM" and it.get("weight") == 1
-    ]
-    if not candidates:
-        print("::error::Tidak menemukan data ANTAM 1 gram di respons API.")
-        print(json.dumps(payload)[:500])
-        sys.exit(1)
+    if item is None:
+        # Cara 2: daftar harga umum dengan limit besar, lalu disaring sendiri
+        try:
+            payload = call_api(f"{API_BASE}/api/prices?limit=200")
+        except urllib.error.HTTPError as e:
+            print(f"::error::Gagal mengambil data (HTTP {e.code}): {e.read().decode('utf-8', 'ignore')}")
+            sys.exit(1)
+        except urllib.error.URLError as e:
+            print(f"::error::Gagal menghubungi API: {e}")
+            sys.exit(1)
 
-    item = candidates[0]
+        items = payload.get("data", [])
+        item = pick_antam_1g(items)
+        if item is None:
+            brands = sorted(set(str(it.get("brand", "?")) for it in items))
+            print("::error::Tidak menemukan data ANTAM di respons API.")
+            print("Merek yang tersedia di respons ini:", ", ".join(brands))
+            sys.exit(1)
+
     sell = item.get("sell_price")
     buyback = item.get("buyback_price")
     updated_at = item.get("updated_at", "")
@@ -55,6 +81,7 @@ def fetch_price():
 
     if not isinstance(sell, (int, float)) or sell <= 0:
         print("::error::Harga jual tidak valid dari API.")
+        print(json.dumps(item))
         sys.exit(1)
 
     return {"tanggal": tanggal, "jual": int(sell), "buyback": int(buyback) if buyback else None}
