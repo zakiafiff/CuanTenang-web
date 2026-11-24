@@ -24,4 +24,5 @@ window.ANTAM_DATA = [
   { "tanggal": "2026-11-21", "jual": 2533000, "buyback": 2171000 },
   { "tanggal": "2026-11-22", "jual": 2533000, "buyback": 2184000 },
   { "tanggal": "2026-11-23", "jual": 2543000, "buyback": 2186000 },
+  { "tanggal": "2026-11-24", "jual": 2545000, "buyback": 2196000 },
 ];
